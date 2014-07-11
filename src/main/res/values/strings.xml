@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">KBCore</string>
+    <string name="menu_settings">Settings</string>
+    
+    <!-- Messages -->
+    <string name="network_connection_title">Network Connection</string>
+    <string name="network_connection_message">Do you want to activate internet connection?</string>
+    <string name="network_connection_settings">Settings</string>
+	<string name="network_connection_cancel">Cancel</string>
+	<string name="network_connection_flash_message">There\'s no Internet connection.\nPlease verify your network settings.</string>
+
+    <string name="alert_ok">OK</string>
+    <string name="alert_title">Oops!</string>
+    <string name="loading_spinner">Loading</string>
+</resources>

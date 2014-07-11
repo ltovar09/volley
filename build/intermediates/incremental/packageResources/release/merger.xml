@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="2" >
+
+    <dataSet config="main" >
+        <source path="/Users/oscarrodriguez/apps/KBTestign/android-core/src/main/res" >
+            <file
+                name="bg_flash_error"
+                path="/Users/oscarrodriguez/apps/KBTestign/android-core/src/main/res/drawable-hdpi/bg_flash_error.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="bg_flash_error_land"
+                path="/Users/oscarrodriguez/apps/KBTestign/android-core/src/main/res/drawable-hdpi/bg_flash_error_land.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="bg_flash_success"
+                path="/Users/oscarrodriguez/apps/KBTestign/android-core/src/main/res/drawable-hdpi/bg_flash_success.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="bg_flash_success_land"
+                path="/Users/oscarrodriguez/apps/KBTestign/android-core/src/main/res/drawable-hdpi/bg_flash_success_land.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="/Users/oscarrodriguez/apps/KBTestign/android-core/src/main/res/drawable-hdpi/ic_launcher.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="bg_flash_error"
+                path="/Users/oscarrodriguez/apps/KBTestign/android-core/src/main/res/drawable-ldpi/bg_flash_error.png"
+                qualifiers="ldpi-v4"
+                type="drawable" />
+            <file
+                name="bg_flash_error_land"
+                path="/Users/oscarrodriguez/apps/KBTestign/android-core/src/main/res/drawable-ldpi/bg_flash_error_land.png"
+                qualifiers="ldpi-v4"
+                type="drawable" />
+            <file
+                name="bg_flash_success"
+                path="/Users/oscarrodriguez/apps/KBTestign/android-core/src/main/res/drawable-ldpi/bg_flash_success.png"
+                qualifiers="ldpi-v4"
+                type="drawable" />
+            <file
+                name="bg_flash_success_land"
+                path="/Users/oscarrodriguez/apps/KBTestign/android-core/src/main/res/drawable-ldpi/bg_flash_success_land.png"
+                qualifiers="ldpi-v4"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="/Users/oscarrodriguez/apps/KBTestign/android-core/src/main/res/drawable-ldpi/ic_launcher.png"
+                qualifiers="ldpi-v4"
+                type="drawable" />
+            <file
+                name="bg_flash_error"
+                path="/Users/oscarrodriguez/apps/KBTestign/android-core/src/main/res/drawable-mdpi/bg_flash_error.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="bg_flash_error_land"
+                path="/Users/oscarrodriguez/apps/KBTestign/android-core/src/main/res/drawable-mdpi/bg_flash_error_land.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="bg_flash_success"
+                path="/Users/oscarrodriguez/apps/KBTestign/android-core/src/main/res/drawable-mdpi/bg_flash_success.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="bg_flash_success_land"
+                path="/Users/oscarrodriguez/apps/KBTestign/android-core/src/main/res/drawable-mdpi/bg_flash_success_land.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="/Users/oscarrodriguez/apps/KBTestign/android-core/src/main/res/drawable-mdpi/ic_launcher.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="bg_flash_error"
+                path="/Users/oscarrodriguez/apps/KBTestign/android-core/src/main/res/drawable-tvdpi/bg_flash_error.png"
+                qualifiers="tvdpi-v4"
+                type="drawable" />
+            <file
+                name="bg_flash_error_land"
+                path="/Users/oscarrodriguez/apps/KBTestign/android-core/src/main/res/drawable-tvdpi/bg_flash_error_land.png"
+                qualifiers="tvdpi-v4"
+                type="drawable" />
+            <file
+                name="bg_flash_success"
+                path="/Users/oscarrodriguez/apps/KBTestign/android-core/src/main/res/drawable-tvdpi/bg_flash_success.png"
+                qualifiers="tvdpi-v4"
+                type="drawable" />
+            <file
+                name="bg_flash_success_land"
+                path="/Users/oscarrodriguez/apps/KBTestign/android-core/src/main/res/drawable-tvdpi/bg_flash_success_land.png"
+                qualifiers="tvdpi-v4"
+                type="drawable" />
+            <file
+                name="flash_success"
+                path="/Users/oscarrodriguez/apps/KBTestign/android-core/src/main/res/drawable-tvdpi/flash_success.png"
+                qualifiers="tvdpi-v4"
+                type="drawable" />
+            <file
+                name="bg_flash_error"
+                path="/Users/oscarrodriguez/apps/KBTestign/android-core/src/main/res/drawable-xhdpi/bg_flash_error.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="/Users/oscarrodriguez/apps/KBTestign/android-core/src/main/res/drawable-xhdpi/ic_launcher.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="flash_error_view"
+                path="/Users/oscarrodriguez/apps/KBTestign/android-core/src/main/res/layout/flash_error_view.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="flash_success_view"
+                path="/Users/oscarrodriguez/apps/KBTestign/android-core/src/main/res/layout/flash_success_view.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="kb_list_layout"
+                path="/Users/oscarrodriguez/apps/KBTestign/android-core/src/main/res/layout/kb_list_layout.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="kb_menu_list_row"
+                path="/Users/oscarrodriguez/apps/KBTestign/android-core/src/main/res/layout/kb_menu_list_row.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="kb_view"
+                path="/Users/oscarrodriguez/apps/KBTestign/android-core/src/main/res/layout/kb_view.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="main"
+                path="/Users/oscarrodriguez/apps/KBTestign/android-core/src/main/res/layout/main.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="seller_row"
+                path="/Users/oscarrodriguez/apps/KBTestign/android-core/src/main/res/layout/seller_row.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="flash_error_view"
+                path="/Users/oscarrodriguez/apps/KBTestign/android-core/src/main/res/layout-land/flash_error_view.xml"
+                qualifiers="land"
+                type="layout" />
+            <file
+                name="flash_success_view"
+                path="/Users/oscarrodriguez/apps/KBTestign/android-core/src/main/res/layout-land/flash_success_view.xml"
+                qualifiers="land"
+                type="layout" />
+            <file
+                name="lash_success_view"
+                path="/Users/oscarrodriguez/apps/KBTestign/android-core/src/main/res/layout-land/lash_success_view.xml"
+                qualifiers="land"
+                type="layout" />
+            <file
+                name="kb_view"
+                path="/Users/oscarrodriguez/apps/KBTestign/android-core/src/main/res/menu/kb_view.xml"
+                qualifiers=""
+                type="menu" />
+            <file
+                path="/Users/oscarrodriguez/apps/KBTestign/android-core/src/main/res/values/dimens.xml"
+                qualifiers="" >
+                <dimen name="flash_error_text_size" >24sp
+                </dimen>
+                <dimen name="flash_error_text_size_land" >24sp
+                </dimen>
+            </file>
+            <file
+                path="/Users/oscarrodriguez/apps/KBTestign/android-core/src/main/res/values/strings.xml"
+                qualifiers="" >
+                <string name="network_connection_title" >Network Connection
+                </string>
+                <string name="loading_spinner" >Loading
+                </string>
+                <string name="alert_title" >Oops!
+                </string>
+                <string name="app_name" >KBCore
+                </string>
+                <string name="alert_ok" >OK
+                </string>
+                <string name="network_connection_flash_message" >There\'s no Internet connection.\nPlease verify your network settings.
+                </string>
+                <string name="network_connection_settings" >Settings
+                </string>
+                <string name="network_connection_message" >Do you want to activate internet connection?
+                </string>
+                <string name="network_connection_cancel" >Cancel
+                </string>
+                <string name="menu_settings" >Settings
+                </string>
+            </file>
+            <file
+                path="/Users/oscarrodriguez/apps/KBTestign/android-core/src/main/res/values/styles.xml"
+                qualifiers="" >
+
+                <style
+                    name="AppBaseTheme"
+                    parent="android:Theme.Light" >
+
+                    <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+                    -->
+                </style>
+
+                <style
+                    name="AppTheme"
+                    parent="AppBaseTheme" >
+
+                    <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+                </style>
+            </file>
+            <file
+                path="/Users/oscarrodriguez/apps/KBTestign/android-core/src/main/res/values-es/strings.xml"
+                qualifiers="es" >
+                <string name="network_connection_message" >Desea activar la conexión a internet?
+                </string>
+                <string name="network_connection_title" >Conecxión a Internet
+                </string>
+                <string name="network_connection_flash_message" >No hay conexión a Internet en este momento.\nPor favor verifique su configuración de red
+                </string>
+                <string name="network_connection_cancel" >Cancelar
+                </string>
+                <string name="network_connection_settings" >Configuración
+                </string>
+            </file>
+        </source>
+        <source path="/Users/oscarrodriguez/apps/KBTestign/android-core/build/generated/res/rs/release" />
+        <source path="/Users/oscarrodriguez/apps/KBTestign/android-core/build/generated/res/generated/release" />
+    </dataSet>
+    <dataSet config="release" >
+        <source path="/Users/oscarrodriguez/apps/KBTestign/android-core/src/release/res" />
+    </dataSet>
+
+</merger>
