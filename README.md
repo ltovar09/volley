@@ -117,7 +117,7 @@ The main configuration is add all the server parameter like url, headers and oth
 
 
 
-```
+```java
 public class YourApplication extends VolleyApplication {
 
 
