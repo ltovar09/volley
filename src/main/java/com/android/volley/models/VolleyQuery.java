@@ -9,8 +9,8 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
+import com.android.volley.base.VolleyApp;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.base.VolleyApplication;
 import com.android.volley.networking.VolleyCallback;
 import org.json.JSONObject;
 
@@ -29,7 +29,7 @@ import static com.android.volley.base.VolleyConstants.REST_METHOD;
 import static com.android.volley.base.VolleyConstants.REST_PATH;
 import static com.android.volley.base.VolleyConstants.REST_URL;
 import static com.android.volley.base.VolleyConstants.REQUEST_TIME_OUT;
-
+import static com.android.volley.base.VolleyConstants.REST_HOST;
 
 /**
  * Created by oscarrodriguez on 6/11/14.
@@ -70,7 +70,7 @@ public class VolleyQuery {
         serverConfig.put(API_BASIC_AUTH_PASSWORD, username);
         serverConfig.put(API_BASIC_AUTH_USERNAME, password);
         serverConfig.put(API_BASIC_AUTH_ENABLED,API_BASIC_AUTH_ENABLE_TRUE);
-        VolleyApplication.getInstance().addRestConfigValue(API_BASIC_AUTH, serverConfig);
+        VolleyApp.getInstance().addRestConfigValue(API_BASIC_AUTH, serverConfig);
 
     }
 
@@ -80,7 +80,7 @@ public class VolleyQuery {
     }*/
 
     public void setHeaders(String key,String value) {
-        VolleyApplication.getInstance().addHeaders(key, value);
+        VolleyApp.getInstance().addHeaders(key, value);
     }
 
 
@@ -133,9 +133,9 @@ public class VolleyQuery {
     public String getRestUrl(String method,VolleyModel model) {
         String url = "";
         try {
-            HashMap<String, Object> paramsMethod = (HashMap<String, Object>) VolleyApplication.getInstance().getMethods().get(method);
+            HashMap<String, Object> paramsMethod = (HashMap<String, Object>) VolleyApp.getInstance().getMethods().get(method);
 
-            String  serverUrl = VolleyApplication.getInstance().getRestConfig().get(REST_URL).toString();
+            String serverUrl = (paramsMethod.get(REST_HOST)!=null) ? paramsMethod.get(REST_HOST).toString() : VolleyApp.getInstance().getRestConfig().get(REST_URL).toString();
 
             String path = paramsMethod.get(REST_PATH).toString();
 
@@ -173,7 +173,7 @@ public class VolleyQuery {
 
           try{
 
-           HashMap<String, Object> paramsMethod = (HashMap<String, Object>) VolleyApplication.getInstance().getMethods().get(method);
+           HashMap<String, Object> paramsMethod = (HashMap<String, Object>) VolleyApp.getInstance().getMethods().get(method);
 
             if (paramsMethod.get(REST_METHOD).toString().equals(METHOD_POST)) {
 
@@ -228,7 +228,7 @@ public class VolleyQuery {
 
                 HashMap<String, String> headers =( model!=null ?  model.toHeaderMap() : new HashMap<String, String>());
 
-                HashMap<String, Object> basicAuthValues = (HashMap<String, Object>) VolleyApplication.getInstance().getBasicAuthKeys();
+                HashMap<String, Object> basicAuthValues = (HashMap<String, Object>) VolleyApp.getInstance().getBasicAuthKeys();
 
                 if(basicAuthValues.get(API_BASIC_AUTH_ENABLED)==API_BASIC_AUTH_ENABLE_TRUE){
                     String basicAuth = basicAuthValues.get(API_BASIC_AUTH_USERNAME).toString() + ":" + basicAuthValues.get(API_BASIC_AUTH_PASSWORD).toString();
@@ -236,7 +236,7 @@ public class VolleyQuery {
                     headers.put("Authorization", basicAuth);
                 }
 
-                Map<String, Object> headerConfig = (Map<String, Object>)VolleyApplication.getInstance().getRestHeaderKeys();
+                Map<String, Object> headerConfig = (Map<String, Object>)VolleyApp.getInstance().getRestHeaderKeys();
                 for (Object key : headerConfig.keySet()) {
                     headers.put(key.toString(),headerConfig.get(key).toString());
                 }
@@ -260,7 +260,7 @@ public class VolleyQuery {
 
             JsonObjectRequest request = doRequest(Request.Method.GET,model,mRequestHost,null,requestTimeOut,callback);
 
-            VolleyApplication.getInstance().addToRequestQueue(request);
+            VolleyApp.getInstance().addToRequestQueue(request);
 
         } catch (Exception e){
             Log.d(JEXO_QUERY, "Problem loading the rest config.");
@@ -276,7 +276,7 @@ public class VolleyQuery {
         try {
             mRequestHost = getRestUrl(method,null);
             JsonObjectRequest request = doRequest(Request.Method.GET,null,mRequestHost,null,requestTimeOut,callback);
-            VolleyApplication.getInstance().addToRequestQueue(request);
+            VolleyApp.getInstance().addToRequestQueue(request);
 
         } catch (Exception e){
             Log.d(JEXO_QUERY, "Problem loading the rest config.");
@@ -298,7 +298,7 @@ public class VolleyQuery {
 
                 JsonObjectRequest request = doRequest(mRequestMethod,null,mRequestHost,params,requestTimeOut,callback);
 
-                VolleyApplication.getInstance().addToRequestQueue(request);
+                VolleyApp.getInstance().addToRequestQueue(request);
 
             }else {
                 Log.d("Response", "The method to this request is not defined");
@@ -327,7 +327,7 @@ public class VolleyQuery {
 
             JsonObjectRequest request = doRequest(mRequestMethod,model,mRequestHost,params,requestTimeOut,callback);
 
-            VolleyApplication.getInstance().addToRequestQueue(request);
+            VolleyApp.getInstance().addToRequestQueue(request);
 
         }else {
             Log.d("Response", "The method to this request is not defined");

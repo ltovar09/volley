@@ -9,7 +9,8 @@ import java.lang.annotation.Target;
 @Target(ElementType.FIELD)
 public @interface VolleyRestMethod {
 	
-	String path() default "";
+	String host() default "www.fifa.com";
+    String path() default "";
 	String method() default "POST";
 	String contentType() default "application/x-www-form-urlencoded";
 }

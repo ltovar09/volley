@@ -2,7 +2,7 @@ package com.android.volley.models;
 
 import android.util.Log;
 import com.android.volley.Request;
-import com.android.volley.base.VolleyApplication;
+import com.android.volley.base.VolleyApp;
 import com.android.volley.networking.VolleyCallback;
 import com.android.volley.toolbox.JsonObjectRequest;
 
@@ -63,7 +63,7 @@ public class VolleyQueryUrl extends VolleyQuery {
 
             JsonObjectRequest request = doRequest(Request.Method.GET,null,this.url,null,super.getRequestTimeOut(),callback);
 
-            VolleyApplication.getInstance().addToRequestQueue(request);
+             VolleyApp.getInstance().addToRequestQueue(request);
 
         } catch (Exception e){
             Log.d(JEXO_QUERY, "Problem loading the rest config.");
@@ -72,22 +72,45 @@ public class VolleyQueryUrl extends VolleyQuery {
     }
 
 
-  public void save(int method,HashMap<String,Object> params,final VolleyCallback callback)
+  public void post(HashMap<String,Object> params,final VolleyCallback callback)
     {
         try {
+            JsonObjectRequest request = doRequest(Request.Method.POST,null,this.url,params, super.getRequestTimeOut(), callback);
+            VolleyApp.getInstance().addToRequestQueue(request);
+        } catch (Exception e){
+            Log.d(JEXO_QUERY, "Problem loading the rest config.");
+        }
 
-           if(method>=0&&method<=3) {
+    }
 
 
-               JsonObjectRequest request = doRequest(method,null,this.url,params, super.getRequestTimeOut(), callback);
+    public void update(HashMap<String,Object> params,final VolleyCallback callback)
+    {
+        try {
+            JsonObjectRequest request = doRequest(Request.Method.PUT,null,this.url,params, super.getRequestTimeOut(), callback);
+            VolleyApp.getInstance().addToRequestQueue(request);
+        } catch (Exception e){
+            Log.d(JEXO_QUERY, "Problem loading the rest config.");
+        }
 
-               VolleyApplication.getInstance().addToRequestQueue(request);
+    }
 
-           }else{
+    public void delete(HashMap<String,Object> params,final VolleyCallback callback)
+    {
+        try {
+            JsonObjectRequest request = doRequest(Request.Method.DELETE,null,this.url,params, super.getRequestTimeOut(), callback);
+            VolleyApp.getInstance().addToRequestQueue(request);
+        } catch (Exception e){
+            Log.d(JEXO_QUERY, "Problem loading the rest config.");
+        }
 
-               Log.d(JEXO_QUERY, "Problem loading the rest methods values.");
-           }
+    }
 
+    public void patch(HashMap<String,Object> params,final VolleyCallback callback)
+    {
+        try {
+            JsonObjectRequest request = doRequest(Request.Method.PATCH,null,this.url,params, super.getRequestTimeOut(), callback);
+            VolleyApp.getInstance().addToRequestQueue(request);
         } catch (Exception e){
             Log.d(JEXO_QUERY, "Problem loading the rest config.");
         }

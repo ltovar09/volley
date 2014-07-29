@@ -31,8 +31,10 @@ public class VolleyConstants {
     public final static String REST_KEY_VALUE="REST_KEY_VALUE";*/
 
     //EndPoint
+    public static final String REST_HOST = "host";
     public static final String REST_PATH = "path";
     public static final String REST_METHOD = "method";
+    public static final String REST_CONTENT_TYPE = "contentType";
 
 
     public static final String METHOD_GET = "GET";

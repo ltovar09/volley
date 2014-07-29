@@ -43,7 +43,7 @@ VolleyQueryUrl implement the common patterns of communicating with a web applica
 VolleyQueryUrl query = new VolleyQueryUrl("http://example.com/resources.json");
 HashMap<String,Object> params = new  HashMap<String,Object>();
 params.put("foo","bar");
-query.save(Request.Method.POST,params,new VolleyCallback() {
+query.post(params,new VolleyCallback() {
 	@Override
 	public void onInit() {
 
@@ -68,7 +68,7 @@ VolleyQueryUrl query = new VolleyQueryUrl("http://example.com/v1/api/resource/:i
 HashMap<String,Object> params = new  HashMap<String,Object>();
 params.put("foo","bar");
 query.setPathIds("id", "123");
-query.save(Request.Method.PUT,params,new VolleyCallback() {
+query.put(params,new VolleyCallback() {
 	@Override
 	public void onInit() {
 
@@ -91,7 +91,7 @@ query.save(Request.Method.PUT,params,new VolleyCallback() {
 ```java
 VolleyQueryUrl query = new VolleyQueryUrl("http://example.com/v1/api/resource/:id");
 query.setPathIds("id", "123");
-query.save(Request.Method.DELETE,params,new VolleyCallback() {
+query.delete(params,new VolleyCallback() {
 	@Override
 	public void onInit() {
 
@@ -118,8 +118,9 @@ The main configuration is add all the server parameter like url, headers and oth
 
 
 ```java
-public class YourApplication extends VolleyApplication {
-
+public class YourApplication {
+  
+  public VolleyApp volleyApp;
 
     @Override
     public void onCreate() {
@@ -150,13 +151,15 @@ Add YourApplication class in the AndroidManifest in the android:name label
 You need to add in youy application class the setServerUrl to provide the root ulr
 
 ```java
-public class YourApplication extends VolleyApplication {
-
-
+public class YourApplication {
+ 
+   public VolleyApp volleyApp;
+   
     @Override
     public void onCreate() {
         super.onCreate();
-		setServerUrl("http://www.example.com");
+		volleyApp = new VolleyApp(this);
+		volleyApp.setApiDomain("http://www.example.com");
 	 }
 }
 
@@ -168,14 +171,16 @@ If you want to add basic authentication to your server, you need to add setBasic
 username and password as parameters.
 
 ```java
-public class YourApplication extends VolleyApplication {
+public class YourApplication {
 
+   public VolleyApp volleyApp;
 
     @Override
     public void onCreate() {
         super.onCreate();
-		setServerUrl("http://www.example.com");
-		setBasicAuth("XXXXX","XXXXXX");
+		volleyApp = new VolleyApp(this);
+		volleyApp.setApiDomain("http://www.example.com");
+		volleyApp.setBasicAuth("XXXXX","XXXXXX");
 	 }
 }
 
@@ -186,18 +191,20 @@ If you need to add a parameter set in the request headers you can to use a HashM
 
 
 ```java
-public class YourApplication extends VolleyApplication {
+public class YourApplication {
 
+    public VolleyApp volleyApp;
 
     @Override
     public void onCreate() {
         super.onCreate();
-		setServerUrl("http://www.example.com");
-		setBasicAuth("XXXXX","XXXXXX");
+		volleyApp = new VolleyApp(this);
+		volleyApp.setApiDomain("http://www.example.com");
+		volleyApp.setBasicAuth("XXXXX","XXXXXX");
 		Map<String,Object> headersValues = new HashMap<String, Object>();
 	    headersValues.put("Api-ID","XXXXXXXXX");
 	    headersValues.put("Secret-ID","XXXXXX");
-	    setHeaders(headersValues);
+	    volleyApp.setHeaders(headersValues);
 	 }
 }
 
@@ -210,15 +217,17 @@ Other way to add parameters to the headers is use addHeaders funciton.
 
 
 ```java
-public class YourApplication extends VolleyApplication {
+public class YourApplication {
 
+    public VolleyApp volleyApp;
 
     @Override
     public void onCreate() {
         super.onCreate();
-		setServerUrl("http://www.example.com");
-		setBasicAuth("XXXXX","XXXXXX");
-	    addRestHeaders("user-token","xxxxxxxx");
+		volleyApp = new VolleyApp(this);
+		volleyApp.setApiDomain("http://www.example.com");
+		volleyApp.setBasicAuth("XXXXX","XXXXXX");
+	    volleyApp.addRestHeaders("user-token","xxxxxxxx");
 	 }
 }
 
@@ -259,16 +268,19 @@ Finally you need to add the end-point class in your appliaction class
 
 
 ```java
-public class YourApplication extends VolleyApplication {
+public class YourApplication{
 
+   public VolleyApp volleyApp;
 
     @Override
     public void onCreate() {
         super.onCreate();
-		setServerUrl("http://www.example.com");
-		setBasicAuth("XXXXX","XXXXXX");
-	    addRestHeaders("user-token","xxxxxxxx");
-		setEndPoint(EndPoint.class);
+		volleyApp = new VolleyApp(this);
+		volleyApp.setApiDomain("http://www.example.com");
+		volleyApp.setBasicAuth("XXXXX","XXXXXX");
+	    volleyApp.addRestHeaders("user-token","xxxxxxxx");
+		volleyApp.setEndPoint(EndPoint.class);
+		
 	 }
 }
 
@@ -422,12 +434,12 @@ In this case you use the VolleyModelField for indicate to the VolleyModel that t
 
 ```java
 
-User user=new User();
+User user = new User();
 VolleyQuery query = new VolleyQuery();
-user.userId="45";
-user.email="api@test.com";
-user.password="XXXXXX";
-user.usertoken="XXXXXX";
+user.userId = "45";
+user.email = "api@test.com";
+user.password = "XXXXXX";
+user.usertoken = "XXXXXX";
 query.save(CREATE_USER,user, new VolleyCallback() {
 	@Override
 	public void onInit() {

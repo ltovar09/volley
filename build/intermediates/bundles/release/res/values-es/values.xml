@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- From: file:/Users/oscarrodriguez/apps/KBTestign/volley/src/main/res/values-es/strings.xml -->
+    <eat-comment />
+
+    <string name="network_connection_cancel">Cancelar</string>
+    <string name="network_connection_flash_message">No hay conexión a Internet en este momento.\nPor favor verifique su configuración de red</string>
+    <string name="network_connection_message">Desea activar la conexión a internet?</string>
+    <string name="network_connection_settings">Configuración</string>
+    <string name="network_connection_title">Conecxión a Internet</string>
+
+</resources>

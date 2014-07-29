@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/toast_layout_root"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/bg_flash_success"
+        android:orientation="horizontal"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp" >
+
+        <TextView
+            android:id="@+id/toastText"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:textColor="#FFFFFF"
+            android:textSize="@dimen/flash_error_text_size" 
+            android:layout_marginLeft="10dp"
+            android:textStyle="normal" />
+
+      
+    </LinearLayout>
+
+</LinearLayout><!-- From: file:/Users/oscarrodriguez/apps/KBTestign/volley/src/main/res/layout/flash_success_view.xml -->
