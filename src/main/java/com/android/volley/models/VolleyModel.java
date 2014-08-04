@@ -19,12 +19,12 @@ import java.util.Map;
 public class VolleyModel {
 
 
-    protected Context context;
+    protected Context mContext;
     protected VolleyQuery query;
 
     public void init(Context context)
     {
-        this.context = context;
+        this.mContext = context;
     }
 
     public VolleyModel()

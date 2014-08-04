@@ -34,12 +34,12 @@ import static com.android.volley.base.VolleyConstants.REST_CONTENT_TYPE;
 public class VolleyApp {
 
 
-    private Map<String, Object> methods;
-    private Map<String, Object> restConfig;
-    private Map<String, Object> restHeaderKeys;
-    private Map<String, Object> restConfigValue;
-    private String serverUrl;
-    private  int requestTimeOut;
+    private Map<String, Object> mMethods;
+    private Map<String, Object> mRestConfig;
+    private Map<String, Object> mRestHeaderKeys;
+    private Map<String, Object> mRestConfigValue;
+    private String mServerUrl;
+    private  int mRequestTimeOut;
 
     /**
      * Log or request TAG
@@ -55,7 +55,7 @@ public class VolleyApp {
     /**
      * A singleton instance of the application class for easy access in other places
      */
-    private  Application application;
+    private  Application mApplication;
     private static VolleyApp instance;
 
 
@@ -66,16 +66,16 @@ public class VolleyApp {
 
     public VolleyApp(Application application){
 
-           this.application = application;
+           this.mApplication = application;
            instance=this;
-           this.methods = new HashMap<String, Object>();
-           this.restConfig = new HashMap<String, Object>();
-           this.restHeaderKeys = new HashMap<String, Object>();
+           this.mMethods = new HashMap<String, Object>();
+           this.mRestConfig = new HashMap<String, Object>();
+           this.mRestHeaderKeys = new HashMap<String, Object>();
     }
 
       public void setApiDomain(String url){
-        this.serverUrl=url;
-        restConfig.put(REST_URL,  this.serverUrl);
+        this.mServerUrl =url;
+        mRestConfig.put(REST_URL, this.mServerUrl);
     }
 
     public void setBasicAuth(String username,String password){
@@ -84,7 +84,7 @@ public class VolleyApp {
         restConfigValue.put(API_BASIC_AUTH_PASSWORD,username);
         restConfigValue.put(API_BASIC_AUTH_USERNAME,password);
         restConfigValue.put(API_BASIC_AUTH_ENABLED,API_BASIC_AUTH_ENABLE_TRUE);
-        restConfig.put(API_BASIC_AUTH, restConfigValue);
+        mRestConfig.put(API_BASIC_AUTH, restConfigValue);
 
     }
 
@@ -104,7 +104,7 @@ public class VolleyApp {
                 endPointMap.put(REST_CONTENT_TYPE,endPointField.contentType());
                 endPointMap.put(REST_METHOD,endPointField.method().toString().toUpperCase());
                 if(!endPointMap.isEmpty()){
-                    this.methods.put(fields[ind].getName(),endPointMap);
+                    this.mMethods.put(fields[ind].getName(), endPointMap);
                 }
             }
 
@@ -112,36 +112,36 @@ public class VolleyApp {
     }
 
 
-    public Map<String, Object> getMethods(){
-        return methods;
+    public Map<String, Object> getmMethods(){
+        return mMethods;
     }
 
-    public Map<String, Object> getRestConfig(){
-        return restConfig;
+    public Map<String, Object> getmRestConfig(){
+        return mRestConfig;
     }
 
-    public Map<String, Object> getRestHeaderKeys(){
+    public Map<String, Object> getmRestHeaderKeys(){
 
-        return (Map<String, Object>) this.restHeaderKeys;
+        return (Map<String, Object>) this.mRestHeaderKeys;
     }
 
     public Map<String, Object> getBasicAuthKeys(){
-        return (Map<String, Object> ) restConfig.get(API_BASIC_AUTH);
+        return (Map<String, Object> ) mRestConfig.get(API_BASIC_AUTH);
     }
 
 
     public void addRestConfigValue(String key,Map<String, String> value){
-        restConfig.put(key,value);
+        mRestConfig.put(key, value);
     }
 
     public void addHeaders(String key,String value){
-        this.restHeaderKeys.put(key,value);
+        this.mRestHeaderKeys.put(key, value);
     }
 
     public void setHeaders(Map<String,Object> headers){
 
         for (Object key : headers.keySet()) {
-            restHeaderKeys.put(key.toString(), headers.get(key));
+            mRestHeaderKeys.put(key.toString(), headers.get(key));
         }
     }
 
@@ -153,7 +153,7 @@ public class VolleyApp {
         // lazy initialize the request queue, the queue instance will be
         // created when it is accessed for the first time
         if (mRequestQueue == null) {
-            mRequestQueue = com.android.volley.toolbox.Volley.newRequestQueue(this.application);
+            mRequestQueue = com.android.volley.toolbox.Volley.newRequestQueue(this.mApplication);
         }
 
         return mRequestQueue;
@@ -191,7 +191,7 @@ public class VolleyApp {
         String value = null;
 
         try {
-            ApplicationInfo ai = this.application.getPackageManager().getApplicationInfo(this.application.getPackageName(), PackageManager.GET_META_DATA);
+            ApplicationInfo ai = this.mApplication.getPackageManager().getApplicationInfo(this.mApplication.getPackageName(), PackageManager.GET_META_DATA);
             Bundle bundle = ai.metaData;
             value = bundle.getString(name);
         } catch (Exception e) {
@@ -207,7 +207,7 @@ public class VolleyApp {
 
         try{
 
-            ConnectivityManager cm = (ConnectivityManager) this.application.getSystemService(Context.CONNECTIVITY_SERVICE);
+            ConnectivityManager cm = (ConnectivityManager) this.mApplication.getSystemService(Context.CONNECTIVITY_SERVICE);
             NetworkInfo netInfo = cm.getNetworkInfo(0);
 
             if (netInfo != null && netInfo.getState()==NetworkInfo.State.CONNECTED) {

@@ -17,18 +17,11 @@ public class VolleyConstants {
     public final static String API_BASIC_AUTH_USERNAME="username";
     public final static String API_BASIC_AUTH_PASSWORD ="password";
     public final static String API_BASIC_AUTH_ENABLE_TRUE ="true";
-    /*public static String HOST="Host";
-    public static String PROTOCOL="Protocol";
-    public static String REST_CONFIG_SETUP="Protocol";*/
 
 
     //public final static String REST_HEADER="REST_HEADER";
     public final static String REST_URL="REST_URL";
 
-    /*public final static String REST_HEADER_KEY="header_key";
-    public final static String REST_HEADER_VALUE="header_value";
-    public final static String REST_KEY_NAME="REST_KEY_NAME";
-    public final static String REST_KEY_VALUE="REST_KEY_VALUE";*/
 
     //EndPoint
     public static final String REST_HOST = "host";
@@ -41,6 +34,7 @@ public class VolleyConstants {
     public static final String METHOD_POST = "POST";
     public static final String METHOD_PUT = "PUT";
     public static final String METHOD_DELETE = "DELETE";
+    public static final String METHOD_PATCH= "PATCH";
 
     // REST VALUE
     public static final int REQUEST_TIME_OUT = 20;

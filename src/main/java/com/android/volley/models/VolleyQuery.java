@@ -23,10 +23,11 @@ import static com.android.volley.base.VolleyConstants.API_BASIC_AUTH_ENABLE_TRUE
 import static com.android.volley.base.VolleyConstants.API_BASIC_AUTH_PASSWORD;
 import static com.android.volley.base.VolleyConstants.API_BASIC_AUTH_USERNAME;
 import static com.android.volley.base.VolleyConstants.METHOD_DELETE;
+import static com.android.volley.base.VolleyConstants.METHOD_PATCH;
 import static com.android.volley.base.VolleyConstants.METHOD_POST;
 import static com.android.volley.base.VolleyConstants.METHOD_PUT;
-import static com.android.volley.base.VolleyConstants.REST_METHOD;
 import static com.android.volley.base.VolleyConstants.REST_PATH;
+import static com.android.volley.base.VolleyConstants.REST_METHOD;
 import static com.android.volley.base.VolleyConstants.REST_URL;
 import static com.android.volley.base.VolleyConstants.REQUEST_TIME_OUT;
 import static com.android.volley.base.VolleyConstants.REST_HOST;
@@ -40,26 +41,25 @@ public class VolleyQuery {
     private  static final String JEXO_QUERY="JexoQuery";
     private  int mRequestMethod;
     private  String mRequestHost;
-   // private VolleyModel model;
-    private  HashMap<String,String> ids;
-    private  HashMap<String,String> keys;
-    private Map<String,String> restHeaderKeys;
+    private  HashMap<String,String> mIds;
+    private  HashMap<String,String> mKeys;
+    private Map<String,String> mRestHeaderKeys;
 
-    private  int requestTimeOut;
-
+    private  int mRequestTimeOut;
 
 
-    public int  getRequestTimeOut(){
 
-        return  requestTimeOut;
+    public int getRequestTimeOut(){
+
+        return mRequestTimeOut;
     }
 
     public  VolleyQuery(){
 
-        ids=new HashMap<String,String>();
-        keys=new HashMap<String,String>();
-        restHeaderKeys=new HashMap<String,String>();
-        requestTimeOut=REQUEST_TIME_OUT;
+        mIds =new HashMap<String,String>();
+        mKeys =new HashMap<String,String>();
+        mRestHeaderKeys =new HashMap<String,String>();
+        mRequestTimeOut =REQUEST_TIME_OUT;
 
     }
 
@@ -86,25 +86,25 @@ public class VolleyQuery {
 
     public void seTimeOut(int time){
 
-        this.requestTimeOut=time;
+        this.mRequestTimeOut =time;
     }
 
     public  HashMap<String,String> getRestIds(){
 
-        return ids;
+        return mIds;
     }
 
     public  HashMap<String,String> getRestKeys(){
 
-        return keys;
+        return mKeys;
     }
 
     public void setPathId(String key,String value){
-        ids.put(key,value);
+        mIds.put(key, value);
     }
 
     public void addUrlParameter(String key,String value){
-        keys.put(key,value);
+        mKeys.put(key, value);
     }
 
 
@@ -116,11 +116,11 @@ public class VolleyQuery {
 
         boolean first = true;
 
-        if (keys!=null && !keys.isEmpty()) {
+        if (mKeys !=null && !mKeys.isEmpty()) {
 
-            for (String key: keys.keySet()) {
+            for (String key: mKeys.keySet()) {
                 format = (first ? "?" : "&");
-                String param = format + key + "=" + URLEncoder.encode(keys.get(key));
+                String param = format + key + "=" + URLEncoder.encode(mKeys.get(key));
                 query=query+param;
                 first = false;
             }
@@ -133,9 +133,9 @@ public class VolleyQuery {
     public String getRestUrl(String method,VolleyModel model) {
         String url = "";
         try {
-            HashMap<String, Object> paramsMethod = (HashMap<String, Object>) VolleyApp.getInstance().getMethods().get(method);
+            HashMap<String, Object> paramsMethod = (HashMap<String, Object>) VolleyApp.getInstance().getmMethods().get(method);
 
-            String serverUrl = (paramsMethod.get(REST_HOST)!=null) ? paramsMethod.get(REST_HOST).toString() : VolleyApp.getInstance().getRestConfig().get(REST_URL).toString();
+            String serverUrl = (paramsMethod.get(REST_HOST)!=null) ? paramsMethod.get(REST_HOST).toString() : VolleyApp.getInstance().getmRestConfig().get(REST_URL).toString();
 
             String path = paramsMethod.get(REST_PATH).toString();
 
@@ -147,12 +147,12 @@ public class VolleyQuery {
            }
 
             if(model!=null) {
-                this.ids = model.toParamId(this.ids);
+                this.mIds = model.toParamId(this.mIds);
             }
-               if (this.ids != null) {
-                    for (String key : ids.keySet()) {
+               if (this.mIds != null) {
+                    for (String key : mIds.keySet()) {
                         String keyp = key;
-                        path = path.replace(":" + key, ids.get(key));
+                        path = path.replace(":" + key, mIds.get(key));
                     }
                 }
 
@@ -173,7 +173,7 @@ public class VolleyQuery {
 
           try{
 
-           HashMap<String, Object> paramsMethod = (HashMap<String, Object>) VolleyApp.getInstance().getMethods().get(method);
+           HashMap<String, Object> paramsMethod = (HashMap<String, Object>) VolleyApp.getInstance().getmMethods().get(method);
 
             if (paramsMethod.get(REST_METHOD).toString().equals(METHOD_POST)) {
 
@@ -186,11 +186,15 @@ public class VolleyQuery {
             } else if (paramsMethod.get(REST_METHOD).toString().equals(METHOD_DELETE)) {
 
                 return Request.Method.DELETE;
-            } else {
 
+            } else if (paramsMethod.get(REST_METHOD).toString().equals(METHOD_PATCH)) {
+
+                 return Request.Method.PATCH;
+
+               }else{
                 return Request.Method.DEPRECATED_GET_OR_POST;
 
-            }
+             }
 
          } catch (Exception e){
             Log.d(JEXO_QUERY, "Problem loading the rest methods values.");
@@ -236,7 +240,7 @@ public class VolleyQuery {
                     headers.put("Authorization", basicAuth);
                 }
 
-                Map<String, Object> headerConfig = (Map<String, Object>)VolleyApp.getInstance().getRestHeaderKeys();
+                Map<String, Object> headerConfig = (Map<String, Object>)VolleyApp.getInstance().getmRestHeaderKeys();
                 for (Object key : headerConfig.keySet()) {
                     headers.put(key.toString(),headerConfig.get(key).toString());
                 }
@@ -258,7 +262,7 @@ public class VolleyQuery {
 
           mRequestHost = getRestUrl(method,model);
 
-            JsonObjectRequest request = doRequest(Request.Method.GET,model,mRequestHost,null,requestTimeOut,callback);
+            JsonObjectRequest request = doRequest(Request.Method.GET,model,mRequestHost,null, mRequestTimeOut,callback);
 
             VolleyApp.getInstance().addToRequestQueue(request);
 
@@ -275,7 +279,7 @@ public class VolleyQuery {
 
         try {
             mRequestHost = getRestUrl(method,null);
-            JsonObjectRequest request = doRequest(Request.Method.GET,null,mRequestHost,null,requestTimeOut,callback);
+            JsonObjectRequest request = doRequest(Request.Method.GET,null,mRequestHost,null, mRequestTimeOut,callback);
             VolleyApp.getInstance().addToRequestQueue(request);
 
         } catch (Exception e){
@@ -296,7 +300,7 @@ public class VolleyQuery {
 
             if(mRequestMethod!=Request.Method.DEPRECATED_GET_OR_POST){
 
-                JsonObjectRequest request = doRequest(mRequestMethod,null,mRequestHost,params,requestTimeOut,callback);
+                JsonObjectRequest request = doRequest(mRequestMethod,null,mRequestHost,params, mRequestTimeOut,callback);
 
                 VolleyApp.getInstance().addToRequestQueue(request);
 
@@ -325,7 +329,7 @@ public class VolleyQuery {
 
             Map<String, Object> params = model.getParams();
 
-            JsonObjectRequest request = doRequest(mRequestMethod,model,mRequestHost,params,requestTimeOut,callback);
+            JsonObjectRequest request = doRequest(mRequestMethod,model,mRequestHost,params, mRequestTimeOut,callback);
 
             VolleyApp.getInstance().addToRequestQueue(request);
 

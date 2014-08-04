@@ -14,7 +14,6 @@ public class VolleyParams {
 	
 	public VolleyParams()
 	{
-		data = new HashMap<String, Object>();
 		ids = new HashMap<String, String>();
 		headers = new HashMap<String, String>();
 	}
